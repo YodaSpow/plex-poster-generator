@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Plex Poster Generator</title>
   <style>
     html, body {
       padding: 0;
@@ -73,7 +73,7 @@
       </div>
       <span>Blur: </span>
       <input id="blur-check" type="checkbox" />
-      <span>Collection Text: </span>
+      <span>4K Overlay: </span>
       <input id="text-check" type="checkbox" checked />
       <span>Background Scale: </span>
       <input id="back-scale" type="range" min="0.3" max="3" step="0.05" />
@@ -116,7 +116,7 @@
     class Options extends Updatable {
       constructor() {
         super();
-        this._prop('blur', true);
+        this._prop('blur', false);
         this._prop('collectionLabel', true);
         this._prop('iconScale', 1);
         this._prop('backgroundScale', 1);
@@ -219,7 +219,7 @@
     images.overlay.addEventListener('load', () => {
       render();
     });
-    images.overlay.src = './overlay.png';
+    images.overlay.src = './4k_overlay.png';
 
     function getIcon() {
       const image = images.icon;
@@ -363,7 +363,7 @@
       const a = document.createElement('a');
       targetCanvas.toBlob((blob) => {
         a.href = URL.createObjectURL(blob);
-        a.download = 'Poster.png';
+        a.download = 'poster.png';
         a.click();
       }, 'image/png');
     })
